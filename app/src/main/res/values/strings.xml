@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LogCatcher</string>
+    <string name="title_activity_main">LogCatcher</string>
+
+    <!-- 状态 -->
+    <string name="status_ready">就绪 · 选择应用后启动</string>
+    <string name="status_capturing">正在捕获日志…</string>
+    <string name="status_stopped">已停止</string>
+    <string name="status_launched">应用已启动</string>
+    <string name="status_crashed">检测到应用崩溃，已捕获错误日志</string>
+    <string name="status_no_log">未捕获到日志内容</string>
+
+    <!-- Shizuku -->
+    <string name="shizuku_status_ok">Shizuku 已授权</string>
+    <string name="shizuku_status_no">Shizuku 未授权</string>
+    <string name="shizuku_not_installed">未检测到 Shizuku</string>
+    <string name="status_shizuku_grant">去授权</string>
+    <string name="status_shizuku_required">需要 Shizuku 权限</string>
+
+    <!-- 应用选择 -->
+    <string name="label_no_app">选择应用</string>
+    <string name="label_select_app">选择目标应用</string>
+    <string name="select_app_title">选择应用</string>
+    <string name="search_hint">搜索应用…</string>
+    <string name="label_show_system">显示系统应用</string>
+    <string name="label_no_launcher">无桌面图标</string>
+    <string name="label_apps">应用</string>
+    <string name="title_app_picker">选择应用</string>
+
+    <!-- 操作 -->
+    <string name="action_start">启动</string>
+    <string name="action_stop">停止</string>
+    <string name="action_restart">重启</string>
+    <string name="btn_select_app">选择</string>
+
+    <!-- 日志操作 -->
+    <string name="btn_share_log">分享</string>
+    <string name="btn_save_log">保存</string>
+    <string name="btn_clear_logs">清空</string>
+    <string name="btn_save_log_file">保存到文件</string>
+    <string name="menu_save">保存日志</string>
+    <string name="menu_share">分享日志</string>
+    <string name="menu_clear">清空日志</string>
+    <string name="log_captured">已捕获日志。</string>
+    <string name="no_log_to_save">暂无日志可保存</string>
+    <string name="log_saved">日志已保存</string>
+    <string name="save_log_title">保存日志文件</string>
+    <string name="share_log_title">分享日志文件</string>
+
+    <!-- 过滤 -->
+    <string name="label_error_mode">仅错误</string>
+    <string name="label_filter">过滤</string>
+    <string name="auto_refresh">自动刷新日志</string>
+
+    <!-- 错误信息 -->
+    <string name="error_empty_package">请先选择应用</string>
+    <string name="error_shizuku_not_ready">Shizuku 未授权</string>
+    <string name="error_launch">启动失败，请检查包名</string>
+    <string name="no_crash_logs">未检测到崩溃日志</string>
+
+    <!-- 提示 -->
+    <string name="app_crashed">应用可能已崩溃！已捕获错误日志。</string>
+    <string name="app_exited">应用已退出。</string>
+    <string name="hint_package_name">搜索或选择应用</string>
+
+    <!-- 标签 -->
+    <string name="pid_label">PID: </string>
+    <string name="label_target_app">目标应用</string>
+    <string name="label_log_output">日志输出</string>
+    <string name="action_settings">设置</string>
+
+    <!-- 行数 -->
+    <string name="lines_count">%d 行</string>
+</resources>
