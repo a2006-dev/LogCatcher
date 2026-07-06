@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorBackground"
+    tools:context=".MainActivity">
+
+    <!-- ═══════════ 1. 顶部极简工具栏 ═══════════ -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        android:elevation="0dp"
+        app:title="@string/app_name"
+        app:titleTextAppearance="@style/TextAppearance_Material3_TitleMedium"
+        app:titleCentered="false">
+
+        <!-- 目标应用 Chip -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|end"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingEnd="4dp">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_target_app"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="@string/label_no_app"
+                android:textSize="12sp"
+                app:chipIconVisible="false"
+                app:chipMinTouchTargetSize="32dp"
+                app:chipEndPadding="10dp"
+                app:chipStartPadding="10dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_more"
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:contentDescription="更多"
+                app:icon="@drawable/ic_more_vert"
+                app:iconSize="20dp"
+                app:cornerRadius="18dp" />
+
+        </LinearLayout>
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <!-- ═══════════ 2. 主内容区：日志控制台 ═══════════ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="4dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="72dp"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- ─── 日志输出区（全屏） ─── -->
+        <FrameLayout
+            android:id="@+id/fl_log_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="?attr/colorSurface"
+            android:layout_marginHorizontal="4dp"
+            android:clipToPadding="false">
+
+            <!-- 日志内容 -->
+            <ScrollView
+                android:id="@+id/scroll_log"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="12dp"
+                android:scrollbarStyle="insideOverlay"
+                android:fillViewport="true"
+                android:background="?attr/colorSurface">
+
+                <TextView
+                    android:id="@+id/tv_log_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text=""
+                    android:textSize="10sp"
+                    android:lineSpacingExtra="3dp"
+                    android:textColor="?attr/colorOnSurface"
+                    android:highlightColor="#33FFFFFF" />
+
+            </ScrollView>
+
+            <!-- 空状态占位 -->
+            <LinearLayout
+                android:id="@+id/layout_empty_state"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="32dp"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⎇"
+                    android:textSize="48sp"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:alpha="0.3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="选择应用并启动捕获"
+                    android:textSize="14sp"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:alpha="0.5" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="日志将实时显示在此处"
+                    android:textSize="11sp"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:alpha="0.35"
+                    android:layout_marginTop="4dp" />
+
+            </LinearLayout>
+
+            <!-- 日志头部指示条（覆盖在日志区顶部） -->
+            <LinearLayout
+                android:id="@+id/layout_log_header"
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="12dp"
+                android:background="?attr/colorSurface"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_status_icon"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/shape_circle"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_status_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="11sp"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:id="@+id/tv_log_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:alpha="0.6" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <!-- ═══════════ 3. 底部悬浮工具栏 ═══════════ -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="28dp"
+        app:strokeWidth="0.5dp"
+        app:strokeColor="?attr/colorOutline">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="4dp">
+
+            <!-- 启动/停止按钮（主要操作） -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_launch"
+                style="@style/Widget.Material3.Button.Filled"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                android:text="@string/action_start"
+                android:textSize="13sp"
+                app:icon="@drawable/ic_play_arrow"
+                app:cornerRadius="22dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_stop"
+                style="@style/Widget.Material3.Button.Filled"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                android:enabled="false"
+                android:text="@string/action_stop"
+                android:textSize="13sp"
+                app:icon="@drawable/ic_stop"
+                app:iconTint="?attr/colorOnErrorContainer"
+                app:backgroundTint="?attr/colorErrorContainer"
+                app:cornerRadius="22dp" />
+
+            <!-- 分隔线 -->
+            <View
+                android:layout_width="1dp"
+                android:layout_height="32dp"
+                android:layout_marginHorizontal="4dp"
+                android:background="?attr/colorOutlineVariant" />
+
+            <!-- 错误模式切换 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="8dp">
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/switch_error_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:thumbTintMode="src_atop" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/label_error_mode"
+                    android:textSize="11sp"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+
+            </LinearLayout>
+
+            <!-- 分隔线 -->
+            <View
+                android:layout_width="1dp"
+                android:layout_height="32dp"
+                android:layout_marginHorizontal="4dp"
+                android:background="?attr/colorOutlineVariant" />
+
+            <!-- 日志操作按钮组 -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_save"
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:enabled="false"
+                android:contentDescription="保存日志"
+                app:icon="@drawable/ic_save"
+                app:iconSize="18dp"
+                app:cornerRadius="20dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_share"
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:enabled="false"
+                android:contentDescription="分享日志"
+                app:icon="@drawable/ic_share"
+                app:iconSize="18dp"
+                app:cornerRadius="20dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_clear"
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:enabled="false"
+                android:contentDescription="清空日志"
+                app:icon="@drawable/ic_delete"
+                app:iconSize="18dp"
+                app:cornerRadius="20dp" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
