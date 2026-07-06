@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Brand -->
+    <color name="primary">#FF1565C0</color>
+    <color name="primary_dark">#FF0D47A1</color>
+    <color name="primary_light">#FF42A5F5</color>
+    <color name="on_primary">#FFFFFFFF</color>
+    
+    <!-- Secondary -->
+    <color name="secondary">#FF26A69A</color>
+    <color name="secondary_dark">#FF00897B</color>
+    <color name="on_secondary">#FFFFFFFF</color>
+
+    <!-- Surface & Background -->
+    <color name="surface_light">#FFFFFFFF</color>
+    <color name="background_light">#FFF5F5FA</color>
+    <color name="on_surface_light">#FF1C1B1F</color>
+    <color name="on_background_light">#FF1C1B1F</color>
+    <color name="surface_container_light">#FFF0F0F5</color>
+    
+    <color name="surface_dark">#FF1E1E2E</color>
+    <color name="background_dark">#FF11111B</color>
+    <color name="on_surface_dark">#FFCDD6F4</color>
+    <color name="on_background_dark">#FFCDD6F4</color>
+    <color name="surface_container_dark">#FF2A2A3C</color>
+
+    <!-- Semantic Colors -->
+    <color name="status_ok">#FF4CAF50</color>
+    <color name="status_error">#FFF44336</color>
+    <color name="status_warning">#FFFF9800</color>
+    <color name="status_info">#FF2196F3</color>
+    
+    <!-- Log Level Colors (Dark) -->
+    <color name="log_verbose">#FF808080</color>
+    <color name="log_debug">#FF4FC3F7</color>
+    <color name="log_info">#FF81C784</color>
+    <color name="log_warn">#FFFFF176</color>
+    <color name="log_error">#FFE57373</color>
+    <color name="log_fatal">#FFFF8A80</color>
+    
+    <!-- Card & Border -->
+    <color name="card_stroke_dark">#FF3A3A4E</color>
+    <color name="card_stroke_light">#FFE0E0E8</color>
+    <color name="divider_dark">#FF2A2A3C</color>
+    <color name="divider_light">#FFE8E8EE</color>
+    
+    <!-- Input -->
+    <color name="input_bg_dark">#FF252538</color>
+    <color name="input_bg_light">#FFF5F5FA</color>
+</resources>
